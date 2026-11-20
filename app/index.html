@@ -3,23 +3,80 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Trophy Guide — GTA VI (PS5)</title>
+<meta name="description" content="Offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: roadmap, missable flags, cited guides, saved checklist.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide &amp; tracker</p>
+  <h1>Leonida Trophy Guide</h1>
+  <p class="subtitle">Every one of the 55 trophies, with its official name, description and grade, a guide in our own words that cites its sources, a roadmap to the platinum, and a checklist that saves in your browser. No account, no network — the whole guide lives in these files.</p>
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-numbers"><span id="progressText">0 of 55 earned</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0"><div class="progress-fill" id="progressFill"></div></div>
+    <p class="progress-grades" id="progressGrades"></p>
+  </div>
+  <p class="missable-banner" id="missableBanner"><strong>Watch out — 1 possibly missable trophy:</strong> <span>Positive Mental Attitude</span> (meditate at every spot). Do the Chapter 1 balcony meditation with Lucia before Chapter 1 ends; it never comes back. Details on its card.</p>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<main>
+  <section class="roadmap" id="roadmapSection" aria-labelledby="roadmapHeading">
+    <h2 id="roadmapHeading">Roadmap to the platinum</h2>
+    <p class="section-note">Four stages, built from the official descriptions. One playthrough, about 200 hours, no online trophies, no difficulty settings. Cheats disable trophies — leave them off.</p>
+    <ol class="stages" id="roadmap"></ol>
+  </section>
+
+  <section class="tracker" aria-labelledby="trackerHeading">
+    <h2 id="trackerHeading">Trophy checklist</h2>
+    <p class="section-note" id="trackerProgress"></p>
+    <div class="controls" id="controls">
+      <label class="search-label">Search <input id="search" type="search" placeholder="Trophy name or mission…" autocomplete="off"></label>
+      <div class="kind-filters" id="kindFilters" role="group" aria-label="Filter by kind">
+        <button type="button" class="kind-btn active" data-kind="all">All 55</button>
+        <button type="button" class="kind-btn" data-kind="story">Story</button>
+        <button type="button" class="kind-btn" data-kind="missable">Missable</button>
+        <button type="button" class="kind-btn" data-kind="collectibles">Collectibles</button>
+        <button type="button" class="kind-btn" data-kind="activities">Activities</button>
+        <button type="button" class="kind-btn" data-kind="side">Side quests</button>
+      </div>
+      <label class="grade-label">Grade
+        <select id="gradeFilter">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="check-label"><input id="spoilerToggle" type="checkbox"> Hide story spoilers</label>
+      <label class="check-label"><input id="earnedOnly" type="checkbox"> Earned only</label>
+      <button id="expandAll" type="button">Show all guides</button>
+      <button id="collapseAll" type="button">Hide all guides</button>
+      <button id="exportBtn" type="button">Export progress</button>
+      <label class="import-label">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
+      <button id="resetBtn" type="button">Reset</button>
+    </div>
+    <p class="result-count" id="resultCount"></p>
+    <div class="cards" id="cards"></div>
+    <p class="empty-note" id="emptyNote" hidden>No trophies match these filters.</p>
+  </section>
+
+  <section class="about" aria-labelledby="aboutHeading">
+    <h2 id="aboutHeading">About this guide</h2>
+    <ul>
+      <li><strong>Official list:</strong> 55 trophies — 1 platinum, 2 gold, 6 silver, 46 bronze — 28 of them hidden on PlayStation until earned. Names, descriptions and grades are shown exactly as PlayStation publishes them.</li>
+      <li><strong>Guides:</strong> written for this entry, in our own words. Each one names its sources beside it, so you can check where every fact comes from. Where a method is still unconfirmed, the guide says so instead of guessing.</li>
+      <li><strong>Your progress</strong> is stored only in this browser (localStorage). Export it to a file to back it up or move it, and import it back any time.</li>
+      <li><strong>Works offline:</strong> this page loads nothing from the network. Source links open only if you click them.</li>
+      <li><strong>No Rockstar artwork:</strong> the look is our own — no logos, box art or game screenshots.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Trophy Guide — an unofficial, fan-made guide for Grand Theft Auto VI on PlayStation 5. Not affiliated with Rockstar Games. Trophy names and descriptions are PlayStation's official list; guide text is original.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
