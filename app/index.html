@@ -3,23 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>GTA VI Trophy Guide &amp; Tracker — all 55 PS5 trophies</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; offline guide &amp; tracker</p>
+  <h1>GTA VI Trophy Guide</h1>
+  <p class="subtitle">Every one of the 55 trophies — official name, description and grade, a cited guide for each, a roadmap to the platinum, and a checklist that saves in your browser. No account, no network, no spoilers unless you ask for them.</p>
+  <div class="progress-wrap" aria-label="Overall progress">
+    <div class="progress-line"><strong id="earned-count">0</strong><span> of 55 earned</span><span id="earned-pct" class="pct">0%</span></div>
+    <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width:0%"></div></div>
+    <p class="grade-counts" id="grade-counts"></p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<main>
+  <p class="roadmap-strip"><strong>Roadmap to the platinum (~200h):</strong> <span>1 · Story, 60–80h</span> → <span>2 · 100% completion, ~100h</span> → <span>3 · Cleanup, ~10h</span> &nbsp;·&nbsp; <a href="#roadmap">Full roadmap</a> &nbsp;·&nbsp; <strong class="missable-inline">⚠ 1 possibly missable: Positive Mental Attitude</strong> <a href="#trophy-28">guide</a></p>
+
+  <section class="controls" aria-label="Tracker controls">
+    <div class="controls-row">
+      <label class="search-label">Search <input id="search" type="search" placeholder="Trophy name, mission, place…" autocomplete="off"></label>
+      <label class="select-label">Grade
+        <select id="grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="check-label"><input id="missable-only" type="checkbox"> Missable only</label>
+      <label class="check-label"><input id="hide-earned" type="checkbox"> Hide earned</label>
+      <label class="check-label spoiler-label"><input id="spoilers" type="checkbox" checked> Hide story spoilers</label>
+    </div>
+    <div class="controls-row kinds" id="kinds" role="group" aria-label="Filter by kind">
+      <button type="button" data-kind="all" class="kind-btn active">All 55</button>
+      <button type="button" data-kind="story" class="kind-btn">Story</button>
+      <button type="button" data-kind="quests" class="kind-btn">Side quests</button>
+      <button type="button" data-kind="collectibles" class="kind-btn">Collectibles</button>
+      <button type="button" data-kind="activities" class="kind-btn">Activities</button>
+      <button type="button" data-kind="misc" class="kind-btn">Misc</button>
+    </div>
+    <div class="controls-row actions">
+      <button id="export" type="button">Export progress</button>
+      <label class="import-btn">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+      <button id="reset" type="button">Reset checklist</button>
+      <span class="saved-note" id="saved-note">Progress saves automatically in this browser.</span>
+    </div>
+  </section>
+
+  <p class="list-meta" id="list-meta"></p>
+  <section id="trophy-list" class="trophy-list" aria-label="Trophy checklist"></section>
+
+  <section id="roadmap" class="roadmap" aria-label="Roadmap to the platinum">
+    <h2>Roadmap to the platinum <span class="roadmap-meta">~200 hours &middot; 1 playthrough &middot; difficulty 4/10 (PowerPyx)</span></h2>
+    <div class="stages">
+      <article class="stage">
+        <p class="stage-num">Stage 1</p>
+        <h3>Play the story <span>60–80 hours</span></h3>
+        <p>Chapters 1–5 with Jason and Lucia. Take optional missions as they appear, scan vehicles with the WAiNK app and study animals with binoculars as you go — the 100% checklist counts progress made during the story.</p>
+        <p class="stage-note">Keep a manual save at the start and end of each chapter. There is no mission replay, and cheats disable trophies and saving.</p>
+      </article>
+      <article class="stage">
+        <p class="stage-num">Stage 2</p>
+        <h3>100% completion <span>~100 hours</span></h3>
+        <p>After the story, open Progress &gt; Stats &gt; 100% Completion and work the checklist: any 70 of the 80 challenges, plus every robbery, underwater discovery, shooting range, drone race and Bret quest. The thresholds are lenient — about 60% of true completion.</p>
+        <p class="stage-note">This stage earns the gold A Long Road and most of the silver and bronze along the way.</p>
+      </article>
+      <article class="stage">
+        <p class="stage-num">Stage 3</p>
+        <h3>Cleanup <span>~10 hours</span></h3>
+        <p>Finish the 8 Strangers &amp; Freaks strands, the character questlines (Andy, Kenton, Billy, Randy, Tyrone, Bret) and whatever miscellaneous trophies are left. The platinum, Vice Got a Price!, pops with the last one.</p>
+        <p class="stage-note">Every quest giver tied to a trophy is still available after the story in free-roam.</p>
+      </article>
+    </div>
+    <p class="missable-alert" id="missable-alert"><strong>Watch out — 1 possibly missable trophy:</strong> Positive Mental Attitude. During Chapter 1, after the mission Down to Earth, Lucia suggests meditating on the balcony at Jason&rsquo;s house. Do it before Chapter 1 ends — it disappears after that, and it is unconfirmed whether it counts toward the trophy. <a href="#trophy-28">Open its guide</a></p>
+    <p class="roadmap-source">Roadmap, times and the missable warning follow PowerPyx&rsquo;s GTA 6 Trophy Guide &amp; Roadmap. <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">powerpyx.com</a></p>
+  </section>
+
+  <footer class="about">
+    <h2>About this guide</h2>
+    <p>Names, descriptions and grades are the official PlayStation 5 list (55 trophies: 1 platinum, 2 gold, 6 silver, 46 bronze; 28 hidden until earned; 0 online). Every guide is written in our own words for this entry and names its source beside it — a specific location or step with no source earns no credit here, so each one is cited. Unconfirmed methods are marked as such instead of guessed. The tracker keeps your ticks in this browser only (localStorage) and can be exported to a file and imported back. This guide is unofficial, runs fully offline, and uses no Rockstar logo, artwork or game screenshots.</p>
+    <p class="about-sources">Main sources: <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx — GTA 6 Trophy Guide &amp; Roadmap</a> &middot; <a href="https://www.keengamer.com/articles/guides/gta-6-trophy-guide-platinum-roadmap-all-55-trophies/">KeenGamer — GTA 6 Trophy Guide &amp; Platinum Roadmap</a> &middot; <a href="https://egamers.io/gta-6-trophy-list-all-55-trophies-and-achievements-plus-the-hardest-ones/">eGamers — GTA 6 Trophy List</a></p>
+  </footer>
+</main>
 <script type="module" src="app.js"></script>
 </body>
 </html>
